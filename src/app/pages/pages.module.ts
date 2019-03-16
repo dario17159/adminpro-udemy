@@ -14,29 +14,26 @@ import { PagesComponent } from './pages.component';
 // temporal
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { ComponentsModule } from '../components/components.module';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
-    declarations:[
-        PagesComponent,
-        DashboardComponent,
-        ProgressComponent,
-        Graficas1Component,
-        IncrementadorComponent
-    ],
-    exports:[
-        DashboardComponent,
-        ProgressComponent,
-        Graficas1Component
-    ],
-    imports:[
-        SharedModule,
-        PAGES_ROUTES,
-        FormsModule,
-        ComponentsModule
-    ]
+  declarations: [
+    PagesComponent,
+    DashboardComponent,
+    ProgressComponent,
+    Graficas1Component,
+    IncrementadorComponent,
+    AccountSettingsComponent
+  ],
+  exports: [DashboardComponent, ProgressComponent, Graficas1Component],
+  imports: [
+    SharedModule,
+    PAGES_ROUTES,
+    FormsModule,
+    ComponentsModule,
+    CommonModule
+  ]
 })
-
-export class PagesModule {
-
-}
+export class PagesModule {}

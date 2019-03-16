@@ -10,6 +10,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 import { FormsModule } from '@angular/forms';
+import { ServiceModule } from './services/service.module';
+
+
 
 @NgModule({
   declarations: [
@@ -19,9 +22,10 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    APP_ROUTES,
-    PagesModule,
-    FormsModule
+    APP_ROUTES, //  modulo de las rutas
+    PagesModule, // modulo de las paginas
+    FormsModule, // modulo de los formularios
+    ServiceModule //modulo de los servicios
   ],
   providers: [],
   bootstrap: [AppComponent]

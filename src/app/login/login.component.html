@@ -4,15 +4,15 @@
     <div class="login-register" style="background-image:url(assets/images/background/login-register.jpg);">
         <div class="login-box card">
             <div class="card-body">
-                <form class="form-horizontal form-material" id="loginform" action="index.html">
+                <form class="form-horizontal form-material" (ngSubmit)="ingresar()">
                     <h3 class="box-title m-b-20">Iniciar Sesión</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Usuario"> </div>
+                            <input class="form-control" type="text" placeholder="Usuario"> </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Constraseña"> </div>
+                            <input class="form-control" type="password" placeholder="Constraseña"> </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group text-center">
                         <div class="col-xs-12 p-b-20">
-                            <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Acceder</button>
+                            <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Ingresar</button>
                         </div>
                     </div>
                     <div class="row">
@@ -39,15 +39,15 @@
                     </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            No tienes cuenta? <a [routerLink]="['register']" class="text-info m-l-5"><b>Registrate</b></a>
+                            No tienes cuenta? <a [routerLink]="['/register']" class="text-info m-l-5"><b>Registrate</b></a>
                         </div>
                     </div>
                 </form>
                 <form class="form-horizontal" id="recoverform" action="index.html">
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <h3>Recover Password</h3>
-                            <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
+                            <h3>Recuperar contraseña</h3>
+                            <p class="text-muted">Ingresa tu email y sigue las intrucciones que te enviamos </p>
                         </div>
                     </div>
                     <div class="form-group ">

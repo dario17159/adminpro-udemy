@@ -4,32 +4,37 @@
     <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
         <div class="login-box card">
             <div class="card-body">
-                <form class="form-horizontal form-material" id="loginform" action="index.html">
+                <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()" class="form-horizontal form-material" id="loginform" action="index.html">
                     <h3 class="box-title m-b-20">Registrate</h3>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Nombre">
+                            <input formControlName="nombre" name="nombre" class="form-control" type="text" required placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Email">
+                            <input formControlName="correo" name="correo" class="form-control" type="email" required placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Contraseña">
+                            <input formControlName="password" name="password" class="form-control" type="password" required placeholder="Contraseña">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Confirmar Contraseña">
+                            <input formControlName="password2" name="password2" class="form-control" type="password" required placeholder="Confirmar Contraseña">
                         </div>
+                    </div>
+                    <div class="form-group" *ngIf="forma.errors?.sonIguales && !forma.pristine">
+                        <p class="text-danger">
+                            Las contraseñas deben ser iguales
+                        </p>
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
                             <div class="checkbox checkbox-success p-t-0">
-                                <input id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
+                                <input formControlName="condiciones" name="condiciones" id="checkbox-signup" type="checkbox" class="filled-in chk-col-light-blue">
                                 <label for="checkbox-signup"> Estoy de acuerdo con los  <a href="javascript:void(0)">Terminos</a></label>
                             </div>
                         </div>
@@ -41,7 +46,7 @@
                     </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            Ya tienes una cuenta? <a [routerLink]="['/login']" class="text-info m-l-5"><b>Iniciar sesión</b></a>
+                            Ya tienes una cuenta? <a [routerLink]="'/login'" class="text-info m-l-5"><b>Iniciar sesión</b></a>
                         </div>
                     </div>
                 </form>

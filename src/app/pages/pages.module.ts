@@ -11,13 +11,15 @@ import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
 import { PagesComponent } from './pages.component';
 
-// temporal
+
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { ComponentsModule } from '../components/components.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { CommonModule } from '@angular/common';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     IncrementadorComponent,
     AccountSettingsComponent,
     PromesasComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent
   ],
   exports: [DashboardComponent, ProgressComponent, Graficas1Component],
   imports: [
@@ -37,7 +40,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     PAGES_ROUTES,
     FormsModule,
     ComponentsModule,
-    CommonModule
+    CommonModule,
+    PipesModule
   ]
 })
 export class PagesModule {}

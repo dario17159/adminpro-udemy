@@ -7,44 +7,50 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/service.index';
+import { ProfileComponent } from './profile/profile.component';
 
 const pagesRoutes: Routes = [
   {
-    path: '',
+    path: "",
     component: PagesComponent,
-    canActivate: [ LoginGuardGuard ],
+    canActivate: [LoginGuardGuard],
     children: [
       {
-        path: 'dashboard',
+        path: "dashboard",
         component: DashboardComponent,
-        data: { titulo: 'Dashboard' }
+        data: { titulo: "Dashboard" }
       },
       {
-        path: 'progress',
+        path: "progress",
         component: ProgressComponent,
-        data: { titulo: 'Progress' }
+        data: { titulo: "Progress" }
       },
       {
-        path: 'graficas1',
+        path: "graficas1",
         component: Graficas1Component,
-        data: { titulo: 'Gráficas' }
+        data: { titulo: "Gráficas" }
       },
       {
-        path: 'promesas',
+        path: "promesas",
         component: PromesasComponent,
-        data: { titulo: 'Promesas' }
+        data: { titulo: "Promesas" }
       },
       {
-        path: 'account-settings',
+        path: "account-settings",
         component: AccountSettingsComponent,
-        data: { titulo: 'Ajustes del Tema' }
+        data: { titulo: "Ajustes del Tema" }
       },
-      { 
-          path: 'rxjs',
-          component: RxjsComponent,
-          data: { titulo: 'Rxjs' }
+      {
+        path: "perfil",
+        component: ProfileComponent,
+        data: { titulo: "Perfil de Usuario" }
       },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+      {
+        path: "rxjs",
+        component: RxjsComponent,
+        data: { titulo: "Rxjs" }
+      },
+      { path: "", redirectTo: "/dashboard", pathMatch: "full" }
     ]
   }
 ];

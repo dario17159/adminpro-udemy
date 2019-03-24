@@ -129,14 +129,17 @@ export class UsuarioService {
 
   actualizarUsuario( usuario: Usuario){
 
-    let url = URL_SERVICIOS + '/usuario/'+ usuario._id;
+    let url = URL_SERVICIOS + '/usuario/' + usuario._id;
 
-    url+= '?token=' + this.token;
+    url += '?token=' + this.token;
 
     return this.http.put(url, usuario)
-      .pipe(map( (resp:any) => {
-        let usuarioDB : Usuario = resp.usuario;
-        this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+      .pipe(map( (resp: any) => {
+
+        if( usuario._id === this.usuario._id){
+          const usuarioDB : Usuario = resp.usuario;
+          this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+        }
 
         swal('Usuario actualizado', usuario.nombre, 'success');
 
@@ -150,7 +153,7 @@ export class UsuarioService {
   cambiarImagen( file: File, id: string){
 
     this._subirArchivoService.subirArchivo(file, 'usuarios', id)
-      .then( (resp:any) => {
+      .then( (resp: any) => {
         this.usuario.img = resp.usuario.img;
         swal('Imagen Actualizada', this.usuario.nombre, 'success');
 
@@ -161,4 +164,38 @@ export class UsuarioService {
       });
   }
 
+  //========================================================================
+  //         Cargar todos los usuarios para verlos en mantenimiento
+  //========================================================================
+  cargarUsuarios( desde: number = 0){
+    let url = URL_SERVICIOS + '/usuario?desde=' + desde;
+
+    return this.http.get(url);
+  }
+
+  //========================================================================
+  //         Buscar usuario por termino
+  //========================================================================
+  
+  buscarUsuarios(termino: string){
+    
+    let url = URL_SERVICIOS + '/busqueda/coleccion/usuario/'+ termino;
+
+    return this.http.get(url)
+      .pipe(map( (resp:any)=> resp.usuarios));
+  }
+
+  //========================================================================
+  //         Borrar los usuarios desde el mantenimiento
+  //========================================================================
+
+  borrarUsuario( id: string){
+    let url = URL_SERVICIOS + '/usuario/' + id + '?token=' + this.token;
+
+    return this.http.delete(url)
+      .pipe(map( resp => {
+        swal('Usuario Borrado', 'El usuario a sido eliminado correctamente', 'success');
+        return true;
+      }));
+  }
 }

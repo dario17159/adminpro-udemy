@@ -17,7 +17,7 @@ export class UsuarioService {
   usuario: Usuario;
   token: string;
 
-  constructor( public http: HttpClient , public router: Router, public _subirArchivoService: SubirArchivoService) {
+  constructor( private http: HttpClient , private router: Router, private _subirArchivoService: SubirArchivoService) {
     this.cargarStorage();
   }
 
